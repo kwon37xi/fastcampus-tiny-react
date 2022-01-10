@@ -1,3 +1,5 @@
+// function hook 관련 부분은 구현안함.
+
 export class Component {
   // empty
   // JavaScript 는 function과 class 를 구분할 수 없어서(typeof 결과가 둘 다 function),
