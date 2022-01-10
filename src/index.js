@@ -1,7 +1,7 @@
 /* @jsx createElement */
 import { createElement, render } from "./react.js";
 
-function Title() {
+function Title(props) {
   return (
     <div>
       <h2>정말 동작 할까?</h2>

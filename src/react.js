@@ -15,9 +15,14 @@ function renderRealDOM(vdom) {
   return $el;
 }
 
-export function render(vdom, container) {
-  container.appendChild(renderRealDOM(vdom));
-}
+export const render = (function () {
+  // 기존 dom 과의 비교를 위해서 closure 로 만들어서 상태 저장
+  let prevVdom = null;
+  return function (nextVdom, container) {
+    // 기존 dom 과 virtual dom 의 상태를 비교
+    container.appendChild(renderRealDOM(nextVdom));
+  };
+})();
 
 export function createElement(tagName, props, ...children) {
   if (typeof tagName === "function") {
