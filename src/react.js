@@ -1,3 +1,9 @@
+export class Component {
+  // empty
+  // JavaScript 는 function과 class 를 구분할 수 없어서(typeof 결과가 둘 다 function),
+  // 상속 후 prototype 확인으로 클래스임을 확인한다.
+}
+
 function renderRealDOM(vdom) {
   // 자식이 없는 경우
   if (vdom === undefined) return;
@@ -26,7 +32,12 @@ export const render = (function () {
 
 export function createElement(tagName, props, ...children) {
   if (typeof tagName === "function") {
-    return tagName.apply(null, [props, ...children]);
+    if (tagName.prototype instanceof Component) {
+      const instance = new tagName({ ...props, children });
+      return instance.render();
+    } else {
+      return tagName.apply(null, [props, ...children]);
+    }
   }
   return {
     tagName,
