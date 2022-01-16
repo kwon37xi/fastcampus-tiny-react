@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build",
+			"detail": "babel src -d build -w -D"
+		},
+		{
+			"type": "npm",
+			"script": "serve",
+			"problemMatcher": [],
+			"label": "npm: serve",
+			"detail": "http-server build -c-1 -p 4001",
+			"group": "build"
+		},
+		{
+			"type": "npm",
+			"script": "install",
+			"problemMatcher": [],
+			"label": "npm: install",
+			"detail": "install dependencies from package",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "npm",
+			"script": "test",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: test",
+			"detail": "echo \"Error: no test specified\" && exit 1"
+		}
+	]
+}
